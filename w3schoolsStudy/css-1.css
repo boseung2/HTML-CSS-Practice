@@ -1,0 +1,23 @@
+body {
+    background-color: rgb(154, 218, 240);
+    opacity: 1.0;    
+}
+
+h1 {
+    color :navy;
+    margin-left: 20px;
+}
+
+div {
+    background-color: green;
+    opacity: 0.3;
+}
+
+p {
+    background-color: yellow;
+    opacity: 0.7;
+}
+
+h2 {
+    background: rgba(0, 128, 0, 0.3) 
+}

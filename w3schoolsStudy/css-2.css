@@ -1,0 +1,33 @@
+/* body {
+    background-image: url("paper.gif");
+} */
+
+p {
+    /* background-image: url("paper.gif"); */
+}
+
+/* body {
+    background-image : url("gradient_bg.png");
+    background-repeat: repeat-x;
+    background-repeat: no-repeat;
+} */
+
+/* body {
+    background-image: url("img_tree.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: scroll; 
+    background-attachment: fixed;
+}*/
+
+
+/* body {
+    background-color: #ffffff;
+    background-image: url("img_tree.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+} */
+
+body {
+    background: #ffffff url("img_tree.png") no-repeat right top;
+}
