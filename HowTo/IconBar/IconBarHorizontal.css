@@ -1,0 +1,23 @@
+.icon-bar {
+    width: 100%;
+    background: #555;
+    overflow: auto;
+}
+
+.icon-bar a {
+    float: left; /* 어디 순서로 정렬되는지 왼쪽부터*/
+    text-align: center;
+    width: 20%;
+    padding: 12px 0; /* 위아래, 왼오 */
+    transition: all 0.3s ease; /* 0.3초만에 슉하고 나타나기 */
+    color: white;
+    font-size: 36px;
+}
+
+.icon-bar a:hover { /* hover - 마우스 올렸을때 */
+    background-color: #000;
+}
+
+.active {
+    background-color: #4CAF50;
+}

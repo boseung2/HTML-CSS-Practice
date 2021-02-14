@@ -1,0 +1,13 @@
+div#first {
+    margin: 100px 150px 100px 80px;
+}
+
+div#second {
+    width: 300px;
+    margin: auto;
+    border: 1px solid red;
+}
+
+div.ex1 {
+    margin-left: inherit;
+}
