@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select {
+            width : 20%;
+            height : 10%;
+        }
+        
+        ul{
+            list-style-type: none;
+            display: inline;
+        }
+    
+        div {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <select id="leftBox" size=10 multiple>
+        <option value="baseball" selected>baseball</option>
+        <option value="soccer">soccer</option>
+        <option value="basketball">basketball</option>
+        <option value="vollyball">vollyball</option>
+    </select>
+    </div>
+    
+    <div>
+    <ul>
+        <li><button>>></button></li>
+        <li><button>></button></li>
+        <li><button><</button></li>
+        <li><button><<</button></li>
+    </ul>
+    </div>
+
+    <div>
+    <select id="rightBox" size=10 multiple>
+        <option value="baseball" hidden>baseball</option>
+        <option value="soccer" hidden>soccer</option>
+        <option value="basketball" hidden>basketball</option>
+        <option value="vollyball" hidden>vollyball</option>
+    </select>
+    </div>
+
+    <script>
+        window.onload = function() {
+            let leftBox = document.getElementById('leftBox');
+            let rightBox = document.getElementById('rightBox');
+            let button = document.getElementsByTagName('button');
+
+            button[0].onclick = function() {
+                for(let i=0; i<leftBox.length; i++) {
+                    leftBox[i].hidden = true;
+                    leftBox[i].selected = false;
+                    rightBox[i].hidden = false;
+                }
+            }
+
+            button[1].onclick = function() {
+                for(let i=0; i<leftBox.length; i++) {
+                    if(leftBox[i].selected == true) {
+                        leftBox[i].selected == false;
+                        leftBox[i].hidden = true;
+                        rightBox[i].hidden = false;
+                    }
+                }
+            }
+
+            button[2].onclick = function() {
+                for(let i=0; i<rightBox.length; i++) {
+                    if(rightBox[i].selected == true) {
+                        rightBox[i].selected = false;
+                        rightBox[i].hidden = true;
+                        leftBox[i].hidden = false;
+                    }
+                }
+            }
+
+            button[3].onclick = function() {
+                for(let i=0; i<rightBox.length; i++) {
+                    rightBox[i].hidden = true;
+                    leftBox[i].hidden = false;
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

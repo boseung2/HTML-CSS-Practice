@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .high_light_0 {
+            background:yellow;
+        }
+        .high_light_1 {
+            background:Orange;
+        }
+        .high_light_2 {
+            background:blue;
+        }
+        .high_light_3 {
+            background:green;
+        }
+        .high_light_4 {
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    <select name="" id="">
+        <option value="1">hello1</option>
+        <option value="2">hello2</option>
+        <option value="3">hello3</option>
+        <option value="4">hello4</option>
+        <option value="5">hello5</option>
+    </select>
+    <input type="text">
+    <input type="password">
+    <input type="radio">
+    <input type="checkbox">
+    <input type="file">
+    <h1 id="target">hello</h1>
+    <h1>hello</h1>
+    <h1>hello</h1>
+    <h1 class="item select">hello</h1>
+    <h1 class="item">hello</h1>
+    <h1 class="item">hello</h1>
+    <h1>hello</h1>
+    <h1>hello</h1>
+    <h1>hello</h1>
+    <h1>hello</h1>
+    <h2>h2h2</h2>
+    <h2>h2h2</h2>
+    <h2>h2h2</h2>
+    <h2>h2h2</h2>
+    <h2>h2h2</h2>
+    <h2>h2h2</h2>
+    <h2 id="target">h2h2</h2>
+    
+    <h3>Header-0</h3>
+    <h3>Header-1</h3>
+    <h3>Header-2</h3>
+    <h3>Header-3</h3>
+    <h3>Header-4</h3>
+    <h3>Header-5</h3>
+    -->
+    <h1 class='select'>Header</h1>
+    <h1>Header</h1>
+    <h1 class='select'>Header</h1>
+    <h1>Header</h1>
+    <h1>Header</h1>
+    <h2>h2h2h2</h2>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script>
+        $(document).ready(function() {
+            //$('*').css('color', 'Red');
+            //$('h1, p').css('color', 'Orange');
+            //$('h2#target').css('color', 'Orange');
+            //$('.item').css('color', 'Orange');
+            //$('h1.item').css('background', 'Red');
+            //$('.item.select').css('color', 'Orange');
+            //$('body *').css('color', 'red');
+            //$('input[type=text]').val('Hello jQuery!');
+            /*
+            setTimeout(function() {
+                let value = $('select > option:selected').val();
+                alert(value);
+            }, 5000);
+            */
+            /*
+            $('h1:odd').css('background', 'Orange');
+            $('h2:even').css('color', 'blue');
+            $('h1:first').css('color', 'green');
+            */
+            /*
+            $('h1:eq(0)').css('background', 'red').css('color', 'white');
+            $('h1:nth-child(3n+1)').css('background', 'purple');
+            */
+
+            /*
+            let array = [
+                {name: 'Hanbit', link: 'http://hanb.co.kr'},
+                {name: 'naver', link:'http://naver.com'}
+            ];
+
+            $.each(array, function(index, item){
+                let output = '';
+
+                output += '<a href="' + item.link + '">';
+                output += '     <h1>' + item.name + '</h1>';
+                output += '</a>';
+
+                document.body.innerHTML += output;
+            });
+            */
+        });
+
+        $(document).ready(function() {
+            /*
+            $('h1').addClass('high_light');
+            $('h1:first').removeClass('high_light');
+            
+            $('h1').each(function (index, item) {
+                $(item).addClass('high_light_' + index);
+            });
+            
+            $('h1').each(function(index, item) {
+            $(this).addClass('high_light_' + index);
+            });
+            
+            $('h1').addClass(function(index) {
+                return 'high_light_' + index;
+            });
+            
+            alert('hi');
+            let object = {};
+            object.name = 'RintIanTta';
+
+            $.extend(object, {
+                gender: 'Male',
+                part: 'Second Guitar'
+            });
+
+            let ouput = '';
+            $.each(object, function(key, item) {
+                output += key + ': ' + item + '\n';
+            });
+            alert(output);
+            
+            $.noConflict();
+            let J = jQuery;
+            j(document).ready(function() {
+                j('h1').removeClass('high_ligh');
+            });
+            */
+        });
+
+        $(document).ready(function() {
+            /*
+            $('h3:even').css({
+                backgroundColor: 'black',
+                color: 'white'
+            });
+            
+            $('h3').filter(':even').css({
+                backgroundColor: 'black',
+                color:'white'
+            });
+            
+
+            $('h3').filter(function(index) {
+            return index % 3 == 0;
+            }).css({
+                backgroundColor: 'black',
+                color: 'white'
+            });
+            
+
+            $('h3').css('background', 'orange')
+            .filter(':even').css('color', 'red');
+            
+
+            $('h1').css('background', 'orange');
+            $('h1:even').css('color', 'white');
+            $('h1.odd').css('color', 'red');
+            
+            $('h1').css('background', 'orange').filter(':even').css('color', 'white')
+            .end().filter(':odd').css('color', 'red');
+
+            $('h1').eq(0).css('background', 'orange');
+            $('h1').eq(-1).css('background', 'red');
+            
+
+            $('h1').css('background', 'gray').add('h2').css('float', 'left');
+            
+
+            $('h1').each(function() {
+                if($(this).is('.select')) {
+                    $(this).css('background', 'orange');
+                }
+            });
+            */
+
+            
+
+
+
+
+
+
+
+        });
+    </script>
+</body>
+</html>

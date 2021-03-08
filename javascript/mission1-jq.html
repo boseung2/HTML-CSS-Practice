@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox">전체<br>
+    <input type="checkbox" value='축구'>축구<br>
+    <input type="checkbox" value='야구'>야구<br>
+    <input type="checkbox" value='배구'>배구<br>
+    <input type="checkbox" value='농구'>농구<br>
+    <textArea id='ta'></textArea>
+    
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('input').each(function(index, item) {
+                $(item)[index].onclick = clickAction;
+            });
+
+            function clickAction() {
+                console.log($('input')[0]);
+                if(this == $('input')[0]) {
+                    changeAll();
+                }
+                /*
+                else{
+                    setFirstButton();
+                }
+                setTestArea();
+                */
+            };
+
+            function changeAll() {
+                $('input').each(function(index, item){
+                    $(this).attr('checked', $('input')[0].attr('checked')); 
+                })
+            }
+
+
+
+        });
+    </script>
+</body>
+</html>

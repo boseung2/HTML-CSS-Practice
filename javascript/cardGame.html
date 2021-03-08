@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width : 133px;
+            height : 150px;
+        }
+    </style>
+</head>
+<body>
+    <button>재시작</button>
+    <button>모두앞면으로</button>
+    <button>모두뒷면으로</button>
+    <br>
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <img src="card/52.png" alt="">
+    <script>
+        let img = document.getElementsByTagName('img'); // img태그들
+        const BACK_SIDE = 'card/52.png'; // 카드뒷면
+        let card = []; // arr 카드번호 섞을 
+        let list = []; // arr 뽑은 카드 저장 
+        init();
+        
+        window.onload = function() {
+            let button = document.getElementsByTagName('button');
+            button[0].onclick = init;
+            button[1].onclick = showAll;
+            button[2].onclick = hideAll;
+            for(let num in img) {
+                img[num].onclick = reverseCard(num);
+            }
+        }
+
+        function init() {
+            list = [];
+            shuffle();
+        }
+
+        //num에 해당하는 card경로를 return한다.
+        function getCardName(num) {
+            return 'card/' + card[num] + '.png';
+        }
+
+        //카드섞는다.
+        function shuffle() {
+            for(let i=0; i<52; i++) {
+                card[i] = i;
+            }
+            card.sort(() => Math.random()-0.5);
+            hideAll();
+        }
+
+        //카드를 모두 보여준다.
+        function showAll() {
+            for(let i=0; i<card.length; i++) {
+                img[i].src = getCardName(i);
+            }
+        }
+
+        //카드를 모두 뒷면으로 보여준다.
+        function hideAll() {
+            for(let i=0; i<card.length; i++) {
+                img[i].src = BACK_SIDE;
+            }
+        }
+
+        //클릭된 카드를 뒤집는다.
+        function reverseCard(num) {
+            return function(e) {
+                console.dir(e);
+                let isBackSide = this.src.includes(BACK_SIDE);
+
+                // (i) 앞면일때
+                if(!isBackSide) {
+                    // 1. 카드 뒷면으로 뒤집기
+                    reverseBack(this);
+                }
+                // (ii) 뒷면일때
+                else {
+                    // 1. 카드 앞면으로 뒤집기
+                    reverseFront(this, num);
+                    // 2. 만약 list개수 짝수일때 뒤에꺼 두개 차가 26이면 속성없앰
+                    if(list.length % 2 == 0) {
+                        removeClickable();
+                    }
+                }
+                console.log('history :' + list);
+            }
+        }
+        
+        // 2개 짝 맞으면 click못하게함
+        function removeClickable() {
+            let first = list[list.length - 1];
+            let second = list[list.length -2];
+            if(Math.abs(first - second) == 26) {
+                img[card.indexOf(first).onclick] = false;
+                img[card.indexOf(second).onclick] = false;
+            }else {
+                // 2개 짝 안맞으면 되돌림
+                window.setTimeout(reverseTwoCard(first, second), 300);
+            }
+        }
+
+        function reverseTwoCard(first, second) {
+            return function(){
+                reverseBack(img[card.indexOf(first)]);
+                reverseBack(img[card.indexOf(second)]);
+            }
+        }
+
+        function getNum(card) {
+            let cardNum = card.src.substr(card.src.length-6, 2);
+            if(isNaN(Number(cardNum))){
+                cardNum = cardNum.substr(1);
+            }
+            return parseInt(cardNum);
+        }
+
+        function reverseFront(card, num) {
+            card.src = getCardName(num);
+            pushToList(card);
+        }
+
+        //src에서 몇번카드인지 뽑아내서 그 숫자 list에 push한다.
+        function pushToList(card) {
+            list.push(getNum(card));
+        }
+
+        function reverseBack(card) {
+            card.src = BACK_SIDE;
+            popToList();
+        }
+
+        function popToList() {
+            list.pop();
+        }
+
+        
+    </script>
+    </body>
+</html>
