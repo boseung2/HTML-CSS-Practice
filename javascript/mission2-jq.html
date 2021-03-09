@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select {
+            width : 20%;
+            height : 10%;
+        }
+    </style>
+</head>
+<body>
+    <select name="" id="leftBox" size="10" multiple>
+        <option value="">축구</option><br>
+        <option value="">농구</option><br>
+        <option value="">야구</option><br>
+        <option value="">배구</option><br>
+    </select>
+
+    <br>
+    <button onclick="moveRightAll()">>></button><br>
+    <button onclick="moveRight()">></button><br>
+    <button onclick="moveLeft()"><</button><br>
+    <button onclick="moveLeftAll()"><<</button><br>
+
+    <select name="" id="rightBox" size="10" multiple>
+    </select>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script>
+        let left = $('#leftBox');
+        let right = $('#rightBox');
+        // 오른쪽으로 
+        function moveRight() {
+            move(left, right);
+        }
+        // 오른쪽으로 모두
+        function moveRightAll() {
+            moveAll(left, right);
+        }
+        // 왼쪽으로
+        function moveLeft() {
+            move(right, left);
+        }
+        // 모두 왼쪽으로
+        function moveLeftAll() {
+            moveAll(right, left);
+        }
+
+        function move(from, to) {          
+            for(let i=from.find('option:selected').length-1; i>=0; i--) {
+                to.append(from.find('option:selected'));
+            }
+        }
+
+        function moveAll(from, to) {
+            selectAll(from);
+            move(from, to);
+        }
+
+        function selectAll(from) {
+            console.log(from.find('option'));
+            from.find('option').each(function(index, item) {
+                item.selected = true;
+            })
+        }
+    </script>
+</body>
+</html>

@@ -141,3 +141,28 @@ enum같은역할하는 symbol씀(찾아보기)
 * prototype 공통 속성이지만 static메서드는아니다 -> 인스턴스메서드(자바식), static으로 하고싶으면 선언식에 추가(다른점 다시 생각해보기 this.사용할수있는차이가있네요)
 
 
+* json형식의 복잡함을 functionalrogramming으로 간단히 해결가능(json parsing에 fp가 좋다)
+
+
+* $(document).ready(function(){})
+$(function(){})
+
+
+* getElement - 고전?
+querySelector - 해당 css선택자 하나
+querySelectorAll - 해당 css선택자 배열로
+
+
+* .css()
+.html()
+.text()
+.attr()
+.prop()
+.val()
+getter, setter(읽을떄 쓸떄)
+
+
+* data-머시기 사용자정의속성
+
+* 유인동 유튭? 테크톡 - 함수형프로그래밍
+https://www.youtube.com/watch?v=fWRMM6AaMMc

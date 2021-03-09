@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width : 140px;
+            height : 150px;
+        }
+    </style>
+</head>
+<body>
+    <button>재시작</button>
+    <button>모두앞면으로</button>
+    <button>모두뒷면으로</button><br>
+    <div id='cards'></div>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script>
+        let $img = []; // img태그 받아올 배열
+        let $button = []; // button태그 받아올 배열
+        let card = []; // 카드 인덱스(img)마다 들어있는 카드값 배열
+        let history = []; // 뽑을때마다 기록할 배열
+        const BACK_SIDE = 'card/52.png'; // 카드 뒷면 
+        const SAME = 26; // 뽑은 두개의 카드가 정답
+
+        $(document).ready(function() {
+            // (i) 게임초기화(카드생성, 카드셔플)
+            createCard();
+            init();
+            $button.get(0).onclick = init;
+            $button.get(1).onclick = showAll;
+            $button.get(2).onclick = hideAll;
+            $img.each(function(index, item) {
+                item.onclick = function() {clickCard(index);};
+            });
+        });
+
+        function createCard() {
+            let inner = '';
+            for(let i=0; i<52; i++) 
+                inner += '<img src="' + BACK_SIDE + '"alt="">';
+            $('#cards').html(inner);
+        };
+
+        function init() {
+            $button = $('button');
+            $img = $('img');
+            history = [];
+            shuffle();
+        };
+
+        function shuffle() {
+            for(let i=0; i<52; i++) 
+                card[i] = i;
+            card.sort(() => Math.random()-0.5);
+            hideAll();
+        };
+
+        function showAll() {
+            $img.each(function(index, item) {
+                item.src = getCardSrc(card[index]);
+            });
+        };
+
+        function hideAll() {
+            $img.each(function(index, item) {
+                item.src = BACK_SIDE;
+            });
+        };
+
+        function clickCard(cardNum) {
+            if(isFront(cardNum)) return;
+            
+            if(isFirst(cardNum)) {
+                flipCard(cardNum);
+                return;
+            }
+            
+            flipCard(cardNum);
+            if(compare() != SAME) {
+                flipCard(history[0], history[1]);
+            }
+            history = [];
+        };
+
+        function isFront(cardNum) {
+            return $img[cardNum].src.indexOf(BACK_SIDE) == -1;
+        }
+
+        function isFirst() {
+            return history.length % 2 == 0;
+        }
+
+        function flipCard(first, second) {
+            // 메개변수가 2개면 2장같이 뒤집는다.
+            if(arguments.length == 2) {
+                window.setTimeout(function() {
+                    flipCard(card.indexOf(second));
+                    flipCard(card.indexOf(first));
+                }, 500);
+                return;
+            }
+            // 매개변수로 first만 넘어오면 해당 카드 뒤집는다.
+            if(isFront(first)) {
+                $img[first].src = BACK_SIDE;
+            } else {
+                $img[first].src = getCardSrc(card[first]);
+                history.push(card[first]);
+            }
+        }
+
+        function compare() {
+            return Math.abs(history[1] - history[0]);
+        }
+
+        function getCardSrc(cardValue) {
+            return 'card/' + cardValue + '.png';
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        /*
+        let output1 = array.indexOf(4);
+        let output2 = array.indexOf(8);
+        let output3 = array.lastIndexOf(4);
+        let output4 = array.lastIndexOf(8);
+
+        let output = '';
+        output += output1 + ' : ' + output2 + '\n';
+        output += output3 + ' : ' + output4;
+        alert(output);
+        
+
+        let sum = 0;
+        let output = '';
+
+        array.forEach(function (element, index, array) {
+            sum += element;
+            output += index + ': ' + element + '-> ' + sum + '\n';
+        });
+        alert(output);
+        
+
+        array = array.filter(function(element, index, array) {
+            return element <= 5;
+        });
+        alert(array);
+        
+
+        function lessThanFive(element, index, array) {
+            return element < 5;
+        }
+
+        function lessThanTwenty(element, index, array) {
+            return element < 20;
+        }
+
+        let output1 = array.every(lessThanFive);
+        let output2 = array.every(lessThanTwenty);
+        let output3 = array.some(lessThanFive);
+        let output4 = array.some(lessThanTwenty);
+        console.log(output1);
+
+        let output = '';
+        output += output1 + ': ' + output2 + '\n';
+        output += output3 + ': ' + output4;
+        alert(output);
+        
+
+        let output = array.map(function(element) {
+            return element * element;
+        });
+
+        alert(output);
+        */
+
+        let output = '';
+        array.reduce(function(previousValue, currentValue, index, array)) {
+            output += preciousValue + ' : ' + currentValue + ' : ' + index + '\n';
+        }
+
+
+    </script>
+</body>
+</html>

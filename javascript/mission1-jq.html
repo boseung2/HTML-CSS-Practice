@@ -18,30 +18,46 @@
     <script>
         $(document).ready(function() {
             $('input').each(function(index, item) {
-                $(item)[index].onclick = clickAction;
+                item.onclick = clickAction;
             });
 
             function clickAction() {
-                console.log($('input')[0]);
-                if(this == $('input')[0]) {
+                if(this == $('input').get(0)) {
                     changeAll();
                 }
-                /*
                 else{
                     setFirstButton();
                 }
                 setTestArea();
-                */
             };
-
-            function changeAll() {
-                $('input').each(function(index, item){
-                    $(this).attr('checked', $('input')[0].attr('checked')); 
+            
+            function changeAll() {                
+                $('input').each(function(index, item) {
+                    item.checked = $('input').get(0).checked;
                 })
-            }
-
-
-
+            };
+            
+            function setFirstButton() {
+                let isAllChecked = true;
+                $('input').each(function(index, item) {
+                    if(index === 0) return;
+                    if(!item.checked) {
+                        isAllChecked = false;
+                    }
+                })
+                $('input').get(0).checked = isAllChecked;
+            };
+            
+            function setTestArea() {
+                let tmp = '';
+                $('input').each(function(index, item) {
+                    if(index === 0) return;
+                    if(item.checked) {
+                        tmp += item.value;
+                    }
+                })
+                $('#ta').val(tmp);
+            };
         });
     </script>
 </body>
